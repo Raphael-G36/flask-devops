@@ -1,70 +1,79 @@
-# DevOps Project 1: Manual Deployment with Nginx + Gunicorn
+# DevOps Project: Flask Deployment (Nginx + Gunicorn + Docker)
 
 ## Overview
-This project demonstrates how to deploy a Flask application using a production-style setup.
+Production-style deployment of a Flask application, progressing from manual server setup to a fully containerized architecture using Docker.
 
-It focuses on understanding how applications run on servers before introducing tools like Docker or Kubernetes.
+Demonstrates understanding of how backend services are structured, exposed, and managed in real-world environments.
 
 ---
 
 ## Architecture
 
+Manual:
 Browser → Nginx → Gunicorn → Flask
+
+Dockerized:
+Browser → Nginx (container) → Flask (Gunicorn container)
 
 ---
 
 ## Tech Stack
 
 - Python (Flask)
-- Nginx
 - Gunicorn
+- Nginx
 - Linux (WSL)
-- systemd
+- Docker
+- Docker Compose
 
 ---
 
-## What I Implemented
+## Key Implementations
 
-- Built a simple Flask API
-- Served the application using Gunicorn
+- Deployed Flask app with Gunicorn (production WSGI server)
 - Configured Nginx as a reverse proxy
-- Created a systemd service for process management
-- Deployed everything in a Linux environment
+- Managed services using systemd (manual setup)
+- Containerized application using Docker
+- Built multi-container architecture with docker-compose
+- Enabled inter-container communication via service networking
 
 ---
 
 ## Key Learnings
 
-- How reverse proxies work
-- Why production servers use Gunicorn instead of Flask dev server
-- How to manage services with systemd
-- How applications are exposed to users via Nginx
+- Production vs development server architecture
+- Reverse proxy design and request flow
+- Containerization and image building
+- Multi-service orchestration with Docker Compose
+- Service isolation and internal networking
 
 ---
 
-## How to Run
+## Run Locally
 
-1. Clone the repo
-2. Create virtual environment
-3. Install dependencies:
-   pip install -r requirements.txt
+### Docker (Recommended)
 
-4. Run Gunicorn:
-   gunicorn -w 4 -b 127.0.0.1:5000 app:app
+### bash
+git clone <your-repo-url>
+cd project2
+docker-compose up --build
 
-5. Configure Nginx using provided config
-
+### Access:
+http://localhost
 ---
 
-## Future Improvements
+## Project Structure
+project2/
+├── app.py
+├── Dockerfile
+├── docker-compose.yml
+├── nginx/
+├── systemd/
 
-- Containerize with Docker
-- Add CI/CD pipeline
-- Deploy to cloud (AWS)
+## Next Steps
+Add environment variable management (.env)
+Implement CI/CD pipeline
+Deploy to cloud infrastructure (AWS)
 
----
-
-## Author
-
+Author
 Raphael Okonmah
-
